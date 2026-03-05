@@ -8,10 +8,9 @@ class ApiClient {
     final uri = Uri.parse(url);
 
     try {
-      final response = await http.get(
-        uri,
-        headers: {'Accept': 'application/json', ...?headers},
-      );
+      final response = await http
+          .get(uri, headers: {'Accept': 'application/json', ...?headers})
+          .timeout(const Duration(seconds: 10));
 
       final data = _handleResponse(response);
 
@@ -41,15 +40,17 @@ class ApiClient {
     final uri = Uri.parse(url);
 
     try {
-      final response = await http.post(
-        uri,
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-          ...?headers,
-        },
-        body: jsonEncode(body),
-      );
+      final response = await http
+          .post(
+            uri,
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json',
+              ...?headers,
+            },
+            body: jsonEncode(body),
+          )
+          .timeout(const Duration(seconds: 10));
 
       return _handleResponse(response);
     } catch (e) {
@@ -67,15 +68,17 @@ class ApiClient {
     final uri = Uri.parse(url);
 
     try {
-      final response = await http.put(
-        uri,
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-          ...?headers,
-        },
-        body: jsonEncode(body),
-      );
+      final response = await http
+          .put(
+            uri,
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json',
+              ...?headers,
+            },
+            body: jsonEncode(body),
+          )
+          .timeout(const Duration(seconds: 10));
 
       return _handleResponse(response);
     } catch (e) {
@@ -92,10 +95,9 @@ class ApiClient {
     final uri = Uri.parse(url);
 
     try {
-      final response = await http.delete(
-        uri,
-        headers: {'Accept': 'application/json', ...?headers},
-      );
+      final response = await http
+          .delete(uri, headers: {'Accept': 'application/json', ...?headers})
+          .timeout(const Duration(seconds: 10));
 
       return _handleResponse(response);
     } catch (e) {

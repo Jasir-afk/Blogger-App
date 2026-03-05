@@ -106,7 +106,7 @@ class AuthController extends GetxController {
       // 1. Sync with backend
       try {
         await ApiClient.put(
-          '$ApiUrls.baseUrl/api/auth/profile', // Standard endpoint for profile updates
+          '${ApiUrls.baseUrl}/api/auth/profile', // Standard endpoint for profile updates
           {
             'name': name,
             'email': email,
